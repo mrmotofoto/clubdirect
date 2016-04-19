@@ -27,26 +27,7 @@ var clubSchema = new mongoose.Schema({
 
 var Club = mongoose.model("Club", clubSchema);
 
-// Club.create({
-//     name: "Fort Lauderdale Country Club",
-//     address: "415 E Country Club Cir, Fort Lauderdale, FL 33317",
-//     hrcontact: "Harry Smith",
-//     hrphone: "347-666-1234",
-//     hremail: "default@gmail.com",
-//     gmcontact: "Anthony Mandatta",
-//     gmphone: "347-452-9552",
-//     gmemail: "gmmanaer@club.com",
-//     distance: "12.7 miles",
-//     notes: "This could be General Notes Section Some more Notes",
-//     image: "https://farm3.staticflickr.com/2217/1711688729_10fd998b5d.jpg" 
-// }, function(err, club) {
-//     if(err) {
-//         console.log(err);
-//     } else {
-//         console.log("New Club Created");
-//         console.log(club);
-//     }
-// });
+
 
 //ROUTES------------------------------------------------
 app.get('/', function(req, res) {
@@ -54,13 +35,12 @@ app.get('/', function(req, res) {
 });
 
 
-
 app.get('/clubs', function(req, res) {
     Club.find({}, function(err, data) {
        if(err) {
            console.log(err);
        } else {
-            res.render('clubs', {clubs: data});
+            res.render('index', {clubs: data});
        }
     });
 });
@@ -96,13 +76,13 @@ var newClub = {
     image:image
 }
 
-Club.create(newClub, function(err, data) {
-  if(err) {
-      console.log(err);
-  }  else {
-      res.redirect('/clubs');
-     }
-}); 
+// Club.create(newClub, function(err, data) {
+//   if(err) {
+//       console.log(err);
+//   }  else {
+//       res.redirect('/clubs');
+//      }
+// }); 
     
 });
 
@@ -110,10 +90,17 @@ app.get('/clubs/new', function(req, res) {
     res.render('new');
 });
 
-app.get('/show', function(req, res) {
+app.get('/clubs/:id', function(req, res) {
+    Club.findById(req.params.id, function(err, data) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.render("show", {club: data});
+        }
+    });
+    
    //res.render('show', {clubs: clubs}); 
 });
-
 
 
 
@@ -180,3 +167,27 @@ app.listen(process.env.PORT, process.env.IP, function(){
 //         image: "https://farm1.staticflickr.com/63/187187176_73d89267be.jpg"
 //         },
 //         ]
+
+
+
+
+// Club.create({
+//     name: "Fort Lauderdale Country Club",
+//     address: "415 E Country Club Cir, Fort Lauderdale, FL 33317",
+//     hrcontact: "Harry Smith",
+//     hrphone: "347-666-1234",
+//     hremail: "default@gmail.com",
+//     gmcontact: "Anthony Mandatta",
+//     gmphone: "347-452-9552",
+//     gmemail: "gmmanaer@club.com",
+//     distance: "12.7 miles",
+//     notes: "This could be General Notes Section Some more Notes",
+//     image: "https://farm3.staticflickr.com/2217/1711688729_10fd998b5d.jpg" 
+// }, function(err, club) {
+//     if(err) {
+//         console.log(err);
+//     } else {
+//         console.log("New Club Created");
+//         console.log(club);
+//     }
+// });
