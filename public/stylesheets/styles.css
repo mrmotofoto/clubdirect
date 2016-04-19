@@ -1,0 +1,230 @@
+    html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+.cf:after {
+    clear: both;
+}
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
+
+
+body {
+    background:rgba(220, 220, 220, .2);
+}
+
+#topnav {
+    width: 100%;
+    height: 60px;
+    background: orange;
+    text-align: center;
+    margin-bottom: 20px;
+}
+a#navLogo {
+    color:white;
+    margin-top: 50px;
+    text-decoration: none;
+
+
+}
+#pageTitle {
+    text-align:center;
+    margin:0 auto;
+ }
+
+#mainContainer {
+padding-left:30px;
+}
+
+.clubContainer{
+    border:1px solid black;
+    margin: 40px auto 10px auto;
+    width:30%;
+    text-align:center;
+    padding:10px 0;
+    border-radius: 5px;
+    float:left;
+    margin-right: 30px;
+    margin-left: 0px;
+    background:#FFF;
+    box-shadow: 3px 3px 10px #AAA;
+}
+.clubContainer img {
+    width:50%;
+}
+.infoTitle {
+    font-weight:bold;
+    font-size: 1.5em;
+}
+.clubInfo {
+    width: 60%;
+    margin: auto;
+    text-align: left;
+}
+
+.mainImage {
+  width: 100%;  
+}
+
+.mainImage h4 {
+font-size: 1.4em;
+color: orange;
+}
+.clubInfo {
+    margin-top:0;
+}
+
+input[type="submit"],
+button
+{
+    background: orange;
+    color:white;
+    height:35px;
+    font-size:17px;
+    border-radius:7px;
+    border:3px solid #FFB347;
+    margin-top: 5px;
+    box-shadow: 2px 2px 5px #AAA;
+}
+
+button:hover
+{
+    background: #FFB347;
+    border:3px solid orange;
+    margin-top: 5px;
+    box-shadow: 2px 2px 5px #AAA;
+}
+
+.backbtn {
+background: #009900;
+    color:white;
+    font-size:17px;
+    height:25px;
+    padding: 8px;
+    border-radius:7px;
+    text-decoration: none;
+    font-family: helvetica;
+    margin-left: 4px;
+    box-shadow: 2px 2px 5px #AAA;
+ }
+ .backbtn:hover {
+background: #00b300;
+ 
+ }
+ 
+.backbtnMain {
+background: #009900;
+color:white;
+font-size:17px;
+height:25px;
+padding: 8px;
+margin-top: 30px;
+border-radius:7px;
+text-decoration: none;
+font-family: helvetica;
+box-shadow: 2px 2px 5px #AAA; 
+
+ }
+ #addNewContainer {
+     margin-top: 40px;
+ }
+ 
+
+
+input[type="submit"]:hover {
+    background: #FFB347;
+    border:3px solid orange;
+}
+
+.btnAnchor {
+    text-decoration:none;
+}
+
+#formContainer {
+    width: 400px;
+    margin: 50px auto;
+    text-align: left;
+ }
+ 
+#formPageContainer {
+    width: 60%;
+    border:1px solid #DDD;
+    margin: 60px auto 40px auto;
+    background: white;
+}
+
+
+label {
+    text-align: left;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width:95%;
+    height: 35px;
+    border:3px solid #DDD;
+    margin: 0 auto;
+    border-radius: 4px;
+    font-size: 1.3em;
+    padding-left: 5px;
+}
+textarea {
+    height: 60px;
+}
+.inputContainer {
+    margin-bottom: 10px;
+}
+
+#addNewContainer {
+    text-align: center;
+}

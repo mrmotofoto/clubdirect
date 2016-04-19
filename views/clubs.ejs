@@ -1,138 +1,16 @@
-<!doctype html>
-<html lang="en">
-<head>
-<style>
-    html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-.cf:before,
-.cf:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-}
-
-.cf:after {
-    clear: both;
-}
-
-/**
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
-.cf {
-    *zoom: 1;
-}
-#pageTitle {
-    text-align:center;
-    margin:0 auto;
-    
-}
-
-#mainContainer {
-padding-left:30px;    
-}
-
-.clubContainer{
-    border:1px solid black;
-    margin: 15px auto 10px auto;
-    width:30%;
-    text-align:center;
-    padding:10px 0;
-    border-radius: 5px;
-    float:left;
-    margin-right: 30px;
-    margin-left: 0px;
-}
-.clubContainer img {
-    width:60%;
-}
-.infoTitle {
-    font-weight:bold;
-    font-size: 1.5em;
-}
-.clubInfo {
-    width: 60%;
-    margin: auto;
-    text-align: left;
-}
-
-
-.mainImage {
-  width: 100%;  
-}
-
-.mainImage h4 {
-font-size: 1.7em;
-}
-.clubInfo {
-    margin-top:0;
-}
-input[type="submit"] {
-    background: orange;
-    color:white;
-    height:30px;
-    font-size:15px;
-    border-radius:7px;
-
-}
-
-.btnAnchor {
-    text-decoration:none;
-}
-
-</style>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
+<% include partials/header %>
+<div id="addNewContainer">
+    <a class="backbtnMain" href="/clubs/new">Add New Club</a>
+</div>
 <!--<h1 id="pageTitle">Clubs page</h1>-->
+
 <div id="mainContainer">
+
     <% clubs.forEach(function(club) { %>
         <div class="clubContainer cf">
             <div class="mainImage">
                 <h4><%= club.name %></h4>
-                <img src="<%= club.image %>">
+                <img style="width: 200px max-height: 200px;" src="<%= club.image %>">
             </div>
             <div class="clubInfo">
                 <p><span class="infoTitle">Address</span></p>
@@ -143,13 +21,11 @@ input[type="submit"] {
     <% }) %>    
 </div>
   
-</body>
-</html>
 
 
 
 
-
+<% include partials/footer %>
 
 
         <!--name: "Fort Lauderdale Country Club",-->
