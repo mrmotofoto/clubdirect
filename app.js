@@ -8,8 +8,7 @@ app.get('/', function(req, res) {
    res.render('landing'); 
 });
 
-app.get('/clubs', function(req, res) {
-    var clubs = [
+  var clubs = [
         {
         name: "Coral Ridge Country Club",
         address: "3801 Bayview Dr., Fort Lauderdale, FL 33308",
@@ -21,7 +20,7 @@ app.get('/clubs', function(req, res) {
         GmEmail: "gm@club.com",
         distance: "6.7 miles",
         notes: "This could be General Notes Section",
-        image: "https://farm1.staticflickr.com/63/187187176_73d89267be.jpg",
+        image: "https://farm3.staticflickr.com/2217/1711688729_10fd998b5d.jpg",
         },
         {
         name: "Fort Lauderdale Country Club",
@@ -49,9 +48,28 @@ app.get('/clubs', function(req, res) {
         distance: "17.7 miles",
         notes: "This could be General Notes Section Some more Notes",
         image: "https://farm9.staticflickr.com/8536/8778590094_60024e6423.jpg"
-        }
+        },
+        {
+        name: "Another Country Club",
+        address: "324 Ocena Ave, Delray Beach, FL 33308",
+        hrContact: "Joey Jesus",
+        hrPhone: "(954) 456-9087",
+        hrEmail: "joey@gmail.com",
+        GmContact: "None",
+        GmPhone: "347-452-9552",
+        GmEmail: "gm@club.com",
+        distance: "9.7 miles",
+        notes: "This could be General Notes Section",
+        image: "https://farm1.staticflickr.com/63/187187176_73d89267be.jpg",
+        },
         ]
+
+app.get('/clubs', function(req, res) {
         res.render('clubs', {clubs: clubs});
+});
+
+app.get('/show', function(req, res) {
+   res.render('show', {clubs: clubs}); 
 });
 
 

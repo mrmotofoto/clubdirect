@@ -45,37 +45,79 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
 #pageTitle {
     text-align:center;
     margin:0 auto;
     
 }
 
+#mainContainer {
+padding-left:30px;    
+}
+
 .clubContainer{
     border:1px solid black;
-    margin: 10px auto;
-    width:95%;
+    margin: 15px auto 10px auto;
+    width:30%;
     text-align:center;
-    padding:30px 0;
+    padding:10px 0;
+    border-radius: 5px;
+    float:left;
+    margin-right: 30px;
+    margin-left: 0px;
 }
 .clubContainer img {
-    width:65%;
+    width:60%;
 }
 .infoTitle {
     font-weight:bold;
+    font-size: 1.5em;
 }
 .clubInfo {
-    width: 65%;
+    width: 60%;
     margin: auto;
     text-align: left;
 }
-.clubTitle {
-    font-size: 2em;
-    background:orange;
-    width :63%;
-    margin: 0 auto;
+
+
+.mainImage {
+  width: 100%;  
+}
+
+.mainImage h4 {
+font-size: 1.7em;
+}
+.clubInfo {
+    margin-top:0;
+}
+input[type="submit"] {
+    background: orange;
     color:white;
-    padding:10px;
+    height:30px;
+    font-size:15px;
+    border-radius:7px;
+
+}
+
+.btnAnchor {
+    text-decoration:none;
 }
 
 </style>
@@ -85,27 +127,22 @@ table {
 </head>
 <body>
 <!--<h1 id="pageTitle">Clubs page</h1>-->
-
-<% clubs.forEach(function(club) { %>
-    <div class="clubContainer">
-        <div class="mainImage">
-            <h4 class="clubTitle"><%= club.name %></h4>
-            <img src="<%= club.image %>">
-        </div>
-        <div class="clubInfo">
-            
-            <p><span class="infoTitle">Address:</span> <%= club.address %></p>
-            <p><span class="infoTitle">HR Contact:</span> <%= club.hrContact %></p>
-            <p><span class="infoTitle">HR Phone:</span> <%= club.hrPhone %></p>
-            <p><span class="infoTitle">HR Email:</span> <%= club.hrEmail %></p>
-            <p><span class="infoTitle">GM Contact:</span> <%= club.GmContact %></p>
-            <p><span class="infoTitle">GM Phone:</span> <%= club.GmPhone %></p>
-            <p><span class="infoTitle">GM Email:</span> <%= club.GmEmail %></p>
-            <p><span class="infoTitle">Distance:</span> <%= club.distance %></p>
-            <p><span class="infoTitle">Notes: <%= club.notes %></p>
-        </div><!--class="clubInfo End"-->
-    </div> <!--class="clubContainer END"-->
-<% }) %>   
+<div id="mainContainer">
+    <% clubs.forEach(function(club) { %>
+        <div class="clubContainer cf">
+            <div class="mainImage">
+                <h4><%= club.name %></h4>
+                <img src="<%= club.image %>">
+            </div>
+            <div class="clubInfo">
+                <p><span class="infoTitle">Address</span></p>
+                <p><%= club.address %></p>
+                <a class="btnAnchor" href="/show"><input type="submit" class="viewBtn" value="View Club"></input></a>
+            </div><!--class="clubInfo End"-->
+        </div> <!--class="clubContainer END"-->
+    <% }) %>    
+</div>
+  
 </body>
 </html>
 

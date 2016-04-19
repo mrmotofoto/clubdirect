@@ -1,0 +1,11 @@
+<h1>SHOW ONE PAGER</h1>
+<% clubs.forEach(function(club){ %>
+    <p><span class="infoTitle">HR Contact:</span> <%= club.hrContact %></p>
+    <p><span class="infoTitle">HR Phone:</span> <%= club.hrPhone %></p>
+    <p><span class="infoTitle">HR Email:</span> <%= club.hrEmail %></p>
+    <p><span class="infoTitle">GM Contact:</span> <%= club.GmContact %></p>
+    <p><span class="infoTitle">GM Phone:</span> <%= club.GmPhone %></p>
+    <p><span class="infoTitle">GM Email:</span> <%= club.GmEmail %></p>
+    <p><span class="infoTitle">Distance:</span> <%= club.distance %></p>
+    <p><span class="infoTitle">Notes:</span> <%= club.notes %></p>
+<% }) %>
