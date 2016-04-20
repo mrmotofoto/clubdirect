@@ -11,7 +11,13 @@ var clubSchema = new mongoose.Schema({
     gmemail: String,
     distance: String,
     notes: String,
-    image: String  
+    image: String,
+    comments: [
+        {
+            type: mongoose.Schema.Types.ObjectId,//OBJ ID REF----------
+            ref: "Comment"//REF TO COMMENT MODEL-----------------------
+        }
+        ]
 });
 
 module.exports = mongoose.model("Club", clubSchema);

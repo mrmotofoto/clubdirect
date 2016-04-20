@@ -1,0 +1,8 @@
+<div class="addCommentsContainer">
+    <form action="/clubs/<%= club._id %>/comments" method="POST">
+        <p class="showTitles">Add New Comment to <%= club.name %></p><br>
+        <input name="comment[author]" name type="text" placeholder="author"></input>
+        <textarea name="comment[text]" type="text" placeholder="Add Comment"></textarea>
+        <button>Submit</button>
+    </form>
+</div>

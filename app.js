@@ -3,19 +3,16 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Club = require('./models/club');
+var Comment = require('./models/comment');
 var seedDB = require('./seeds');
 
-
-seedDB();
 mongoose.connect('mongodb://localhost/club_direct');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + "/public"));
 
-
-//SCHEMA SETUP----------------------------------------------------
-
+seedDB();
 
 
 
@@ -30,154 +27,100 @@ app.get('/clubs', function(req, res) {
        if(err) {
            console.log(err);
        } else {
-            res.render('index', {clubs: data});
+            res.render('clubs/index', {clubs: data});
        }
     });
 });
 
-app.post('/clubs', function(req, res) {
-var noEntry = "No Entry";
-var defaultImg = "https://farm1.staticflickr.com/63/187187176_73d89267be.jpg";
-var defaultAdd = "XXX E ZZZZ YYY CCC, Fort Lauderdale, FL 11111"
-  
-var name = req.body.name ? req.body.name : noEntry ,
-    address = req.body.address ? req.body.address : noEntry,
-    hrcontact = req.body.hrcontact ? req.body.hrcontact : noEntry,
-    hrphone = req.body.hrphone ? req.body.hrphone : noEntry,
-    hremail = req.body.hremail ? req.body.hremail : noEntry,
-    gmcontact = req.body.gmcontact ? req.body.gmcontact : noEntry,
-    gmphone = req.body.gmphone ? req.body.gmphone : noEntry,
-    gmemail = req.body.gmemail ? req.body.gmemail : noEntry,
-    distance = req.body.distance ? req.body.distance : noEntry,
-    notes = req.body.notes ? req.body.notes : noEntry,
-    image = req.body.image ? req.body.image : defaultImg;
-    
-var newClub = {
-    name:name,
-    address: address,
-    hrcontact:hrcontact,
-    hremail:hremail,
-    hrphone:hrphone,
-    gmcontact:gmcontact,
-    gmemail:gmemail,
-    gmphone:gmphone,
-    distance:distance,
-    notes:notes,
-    image:image
-}
 
-Club.create(newClub, function(err, data) {
-  if(err) {
-      console.log(err);
-  }  else {
-      res.redirect('/clubs');
-     }
-}); 
+app.post('/clubs', function(req, res) {
+//DEFAULT ENTRIES IF FORM FIELDS LEFT BLANK--------------------------------------
+    var noEntry = "No Entry";
+    var defaultImg = "https://farm1.staticflickr.com/63/187187176_73d89267be.jpg";
+    var defaultAdd = "XXX E ZZZZ YYY CCC, Fort Lauderdale, FL 11111"
+      
+    var name = req.body.name ? req.body.name : noEntry ,
+        address = req.body.address ? req.body.address : noEntry,
+        hrcontact = req.body.hrcontact ? req.body.hrcontact : noEntry,
+        hrphone = req.body.hrphone ? req.body.hrphone : noEntry,
+        hremail = req.body.hremail ? req.body.hremail : noEntry,
+        gmcontact = req.body.gmcontact ? req.body.gmcontact : noEntry,
+        gmphone = req.body.gmphone ? req.body.gmphone : noEntry,
+        gmemail = req.body.gmemail ? req.body.gmemail : noEntry,
+        distance = req.body.distance ? req.body.distance : noEntry,
+        notes = req.body.notes ? req.body.notes : noEntry,
+        image = req.body.image ? req.body.image : defaultImg;
+        
+    var newClub = {
+        name:name,
+        address: address,
+        hrcontact:hrcontact,
+        hremail:hremail,
+        hrphone:hrphone,
+        gmcontact:gmcontact,
+        gmemail:gmemail,
+        gmphone:gmphone,
+        distance:distance,
+        notes:notes,
+        image:image
+    }
     
-});
+    Club.create(newClub, function(err, data) {
+      if(err) {
+          console.log(err);
+      }  else {
+          res.redirect('/clubs');
+         }
+    }); 
+}); //app.post END--------------------------------------------------------------
 
 app.get('/clubs/new', function(req, res) {
-    res.render('new');
+    res.render('clubs/new');
 });
 
+
 app.get('/clubs/:id', function(req, res) {
-    Club.findById(req.params.id, function(err, data) {
+    Club.findById(req.params.id).populate('comments').exec(function(err, data) {
         if(err) {
             console.log(err);
         } else {
-            res.render("show", {club: data});
+            console.log(data);
+            res.render("clubs/show", {club: data});
         }
     });
-    
-   //res.render('show', {clubs: clubs}); 
 });
 
 
+app.get('/clubs/:id/comments/new', function(req, res) {
+    Club.findById(req.params.id, function(err, club) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.render("comments/new", {club: club});
+        }
+    })
+});
+
+app.post('/clubs/:id/comments', function(req, res) {
+Club.findById(req.params.id, function(err, club) {
+    if(err) {
+        console.log(err);
+        res.redirect('/clubs');
+    } else {
+        Comment.create(req.body.comment, function(err, comment) {
+            if(err) {
+                console.log(err);
+            } else {
+                club.comments.push(comment);
+                club.save();
+                res.redirect('/clubs/' + club._id);
+            }
+        })
+    }
+});    
+});
 
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log('Server Is Running'); 
 });
 
-
-
-
-
-//   var clubs = [
-//         {
-//         name: "Coral Ridge Country Club",
-//         address: "3801 Bayview Dr., Fort Lauderdale, FL 33308",
-//         hrcontact: "John Smith",
-//         hrphone: "(954) 449-0399",
-//         hremail: "default@gmail.com",
-//         gmcontact: "None",
-//         gmphone: "347-452-9552",
-//         gmemail: "gm@club.com",
-//         distance: "6.7 miles",
-//         notes: "This could be General Notes Section",
-//         image: "https://farm3.staticflickr.com/2217/1711688729_10fd998b5d.jpg",
-//         },
-//         {
-//         name: "Fort Lauderdale Country Club",
-//         address: "415 E Country Club Cir, Fort Lauderdale, FL 33317",
-//         hrcontact: "Harry Smith",
-//         hrphone: "347-666-1234",
-//         hremail: "default@gmail.com",
-//         gmcontact: "Anthony Mandatta",
-//         gmphone: "347-452-9552",
-//         gmemail: "gmmanaer@club.com",
-//         distance: "12.7 miles",
-//         notes: "This could be General Notes Section Some more Notes",
-//         image: "https://farm3.staticflickr.com/2217/1711688729_10fd998b5d.jpg"
-            
-//         },
-//         {
-//         name: "Bonaventure Country Club",
-//         address: "3201 W Rolling Hills Cir, Fort Lauderdale, FL 33328",
-//         hrcontact: "Joey Bianchi",
-//         hrphone: "342-234-1234",
-//         hremail: "defaulthr@gmail.com",
-//         gmcontact: "Tony Montana",
-//         gmphone: "347-898-0987",
-//         gmemail: "gmmanager@club.com",
-//         distance: "17.7 miles",
-//         notes: "This could be General Notes Section Some more Notes",
-//         image: "https://farm9.staticflickr.com/8536/8778590094_60024e6423.jpg"
-//         },
-//         {
-//         name: "Another Country Club",
-//         address: "324 Ocena Ave, Delray Beach, FL 33308",
-//         hrcontact: "Joey Jesus",
-//         hrphone: "(954) 456-9087",
-//         hremail: "joey@gmail.com",
-//         gmcontact: "None",
-//         gmphone: "347-452-9552",
-//         gmemail: "gm@club.com",
-//         distance: "9.7 miles",
-//         notes: "This could be General Notes Section",
-//         image: "https://farm1.staticflickr.com/63/187187176_73d89267be.jpg"
-//         },
-//         ]
-
-
-
-
-// Club.create({
-//     name: "Fort Lauderdale Country Club",
-//     address: "415 E Country Club Cir, Fort Lauderdale, FL 33317",
-//     hrcontact: "Harry Smith",
-//     hrphone: "347-666-1234",
-//     hremail: "default@gmail.com",
-//     gmcontact: "Anthony Mandatta",
-//     gmphone: "347-452-9552",
-//     gmemail: "gmmanaer@club.com",
-//     distance: "12.7 miles",
-//     notes: "This could be General Notes Section Some more Notes",
-//     image: "https://farm3.staticflickr.com/2217/1711688729_10fd998b5d.jpg" 
-// }, function(err, club) {
-//     if(err) {
-//         console.log(err);
-//     } else {
-//         console.log("New Club Created");
-//         console.log(club);
-//     }
-// });
