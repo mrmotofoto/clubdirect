@@ -83,7 +83,7 @@ body {
     font-family: 'Oswald', sans-serif;
     position: absolute;
     top: 27px;
-    left: 227px;
+    left: 230px;
     color:white;
     text-decoration: none;
 }
@@ -118,6 +118,7 @@ padding-left:30px;
     float:left;
     margin-right: 30px;
     margin-left: 0px;
+    margin-bottom: 0px;
     background:#FFF;
     box-shadow: 3px 3px 10px #AAA;
 }
@@ -227,9 +228,7 @@ text-decoration:none;
    height: 40px;
 }
 
-.viewBtn {
 
-}
 
 #formContainer {
     width: 400px;
@@ -269,7 +268,7 @@ textarea {
 }
 
 #addNewContainer {
-    text-align: left;
+    text-align: center;
     margin: 100px auto 0px auto;
     height: 5px;
     width: 95%;
@@ -277,7 +276,6 @@ textarea {
 
 
 #showContainer {
-    border:1px solid black;
     margin-top: 100px;
     width: 90%;
     margin: 100px auto 0px auto;
@@ -286,8 +284,10 @@ textarea {
 .showImg {
     width: 45%;
     float:left;
-    border:1px solid black;
-    padding: 10px;
+    border:1px solid #CCC;
+    border-radius:5px;
+    padding: 12px;
+    background:white;
 }
 
 .showImg img {
@@ -297,7 +297,8 @@ textarea {
 .showContent {
     width: 50%;
     float:right;
-    border:1px solid black;
+    border:1px solid #CCC;
+    border-radius:5px;
     text-align: left;
     padding: 10px 0px 10px 10px;
     background:white;
@@ -306,9 +307,22 @@ textarea {
  padding-bottom: 5px;   
 }
 
-
-
 .commentsContainer {
-    border:1px solid black;
+    border:1px solid #CCC;
+    border-radius:5px;
     margin-top: 20px;
+    width: 45%;
+    padding: 12px;
+    background:white;
+}
+
+.commentsContainer textarea {
+    width: 98%;
+    height: 125px;
+    margin-bottom: 10px;
+}
+
+p.showTitles {
+    color:orange;
+    font-size: .9em;
 }

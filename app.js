@@ -2,7 +2,11 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var Club = require('./models/club');
+var seedDB = require('./seeds');
 
+
+seedDB();
 mongoose.connect('mongodb://localhost/club_direct');
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -11,27 +15,13 @@ app.use(express.static(__dirname + "/public"));
 
 
 //SCHEMA SETUP----------------------------------------------------
-var clubSchema = new mongoose.Schema({
-    name: String,
-    address: String,
-    hrcontact: String,
-    hrphone: String,
-    hremail: String,
-    gmcontact: String,
-    gmphone: String,
-    gmemail: String,
-    distance: String,
-    notes: String,
-    image: String  
-});
 
-var Club = mongoose.model("Club", clubSchema);
 
 
 
 //ROUTES------------------------------------------------
 app.get('/', function(req, res) {
-   res.render('landing'); 
+   res.redirect('/clubs'); 
 });
 
 
