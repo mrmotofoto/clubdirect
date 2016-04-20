@@ -76,13 +76,13 @@ var newClub = {
     image:image
 }
 
-// Club.create(newClub, function(err, data) {
-//   if(err) {
-//       console.log(err);
-//   }  else {
-//       res.redirect('/clubs');
-//      }
-// }); 
+Club.create(newClub, function(err, data) {
+  if(err) {
+      console.log(err);
+  }  else {
+      res.redirect('/clubs');
+     }
+}); 
     
 });
 

@@ -1,17 +1,33 @@
 <% include partials/header %>
-<h1>SHOW ONE PAGER</h1>
 
-<p> <%= club.name %></p>
-<p> <%= club.address %></p>
-<p> <%= club.hrcontact %></p>
-<p> <%= club.hremail %></p>
-<p> <%= club.hrphone %></p>
-<p> <%= club.gmcontact %></p>
-<p> <%= club.gmphone %></p>
-<p> <%= club.gmemail %></p>
-<p> <%= club.distance %></p>
-<p> <%= club.notes %></p>
-<img src="<%= club.image %>">
+
+<div id="showContainer">
+    <div class="showContent">
+        <p> <%= club.name %></p>
+        <p> <%= club.address %></p>
+        <p> <%= club.hrcontact %></p>
+        <p> <%= club.hremail %></p>
+        <p> <%= club.hrphone %></p>
+        <p> <%= club.gmcontact %></p>
+        <p> <%= club.gmphone %></p>
+        <p> <%= club.gmemail %></p>
+        <p> <%= club.distance %></p>
+        <p> <%= club.notes %></p>    
+    </div>
+    <div class="showImg">
+
+        <img src="<%= club.image %>">         
+    </div>
+    <div class="cf"></div>
+<div class="commentsContainer">
+    <h1>This will be comments container</h1>
+    <form>
+        <input type="text">Comments</input>
+    </form>
+</div>
+</div><!--id="showContainer END"-->
+
+
 <% include partials/footer %>
 
 

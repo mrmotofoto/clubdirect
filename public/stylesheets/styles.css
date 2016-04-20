@@ -60,22 +60,45 @@ table {
 
 body {
     background:rgba(220, 220, 220, .2);
+    font-family: 'Oswald', sans-serif;
 }
 
-#topnav {
+#topNav {
     width: 100%;
     height: 60px;
     background: orange;
-    text-align: center;
-    margin-bottom: 20px;
+    position: fixed;
+    top:0px;
 }
-a#navLogo {
+.navLogo {
+    font-family: 'Oswald', sans-serif;
     color:white;
-    margin-top: 50px;
-    text-decoration: none;
-
-
+    font-size: 2.2em;
+    text-align: left;
+    margin-top: 12px;
+    margin-left: 35px;
 }
+
+.signUp {
+    font-family: 'Oswald', sans-serif;
+    position: absolute;
+    top: 27px;
+    left: 227px;
+    color:white;
+    text-decoration: none;
+}
+.signUp a {
+    font-size: 1.2em;
+    color:white;
+    text-decoration: none;
+}
+
+.logoSpan {
+    font-style: italic;
+    color:#3F9FBF;
+    font-size: .8em;
+}
+
 #pageTitle {
     text-align:center;
     margin:0 auto;
@@ -86,8 +109,8 @@ padding-left:30px;
 }
 
 .clubContainer{
-    border:1px solid black;
-    margin: 40px auto 10px auto;
+    border:2px solid #CCC;
+    margin: 60px auto 10px auto;
     width:30%;
     text-align:center;
     padding:10px 0;
@@ -103,21 +126,30 @@ padding-left:30px;
 }
 .infoTitle {
     font-weight:bold;
-    font-size: 1.5em;
+    font-size: 1.2em;
+    margin-bottom: 3px;
+    
 }
+
+
 .clubInfo {
     width: 50%;
     margin: auto;
-    text-align: left;
+    text-align: center;
+    margin-bottom: 7px;
 }
 
 .mainImage {
   width: 100%;  
 }
+.mainImage img {
+    margin-bottom: 5px;
+}
 
 .mainImage h4 {
 font-size: 1.4em;
 color: orange;
+margin-bottom:5px;
 }
 .clubInfo {
     margin-top:0;
@@ -146,15 +178,15 @@ button:hover
 
 .backbtn {
 background: #009900;
-    color:white;
-    font-size:17px;
-    height:25px;
-    padding: 8px;
-    border-radius:7px;
-    text-decoration: none;
-    font-family: helvetica;
-    margin-left: 4px;
-    box-shadow: 2px 2px 5px #AAA;
+color:white;
+font-size:17px;
+height:25px;
+padding: 8px;
+border-radius:7px;
+text-decoration: none;
+font-family: helvetica;
+margin-left: 4px;
+box-shadow: 2px 2px 5px #AAA;
  }
  .backbtn:hover {
 background: #00b300;
@@ -162,12 +194,13 @@ background: #00b300;
  }
  
 .backbtnMain {
-background: #009900;
+background: #3F9FBF;
 color:white;
-font-size:17px;
+font-size:18px;
 height:25px;
-padding: 8px;
-margin-top: 30px;
+padding: 20px;
+border:2px solid white;
+margin-top: 20px;
 border-radius:7px;
 text-decoration: none;
 font-family: helvetica;
@@ -186,25 +219,35 @@ input[type="submit"]:hover {
 }
 
 .btnAnchor {
-    text-decoration:none;
+text-decoration:none;
+
+}
+.btnAnchor input {
+    margin-top: 5px;
+   height: 40px;
+}
+
+.viewBtn {
+
 }
 
 #formContainer {
     width: 400px;
-    margin: 50px auto;
+    margin: 50px auto 0px auto;
     text-align: left;
  }
  
 #formPageContainer {
     width: 60%;
     border:1px solid #DDD;
-    margin: 60px auto 40px auto;
+    margin: 100px auto 40px auto;
     background: white;
 }
 
 
 label {
     text-align: left;
+    font-family: helvetica;
 }
 
 input[type="text"],
@@ -226,5 +269,46 @@ textarea {
 }
 
 #addNewContainer {
-    text-align: center;
+    text-align: left;
+    margin: 100px auto 0px auto;
+    height: 5px;
+    width: 95%;
+}
+
+
+#showContainer {
+    border:1px solid black;
+    margin-top: 100px;
+    width: 90%;
+    margin: 100px auto 0px auto;
+    padding: 20px;
+}
+.showImg {
+    width: 45%;
+    float:left;
+    border:1px solid black;
+    padding: 10px;
+}
+
+.showImg img {
+    width: 100%;
+ }
+
+.showContent {
+    width: 50%;
+    float:right;
+    border:1px solid black;
+    text-align: left;
+    padding: 10px 0px 10px 10px;
+    background:white;
+}
+.showContent p {
+ padding-bottom: 5px;   
+}
+
+
+
+.commentsContainer {
+    border:1px solid black;
+    margin-top: 20px;
 }

@@ -5,7 +5,6 @@
 <!--<h1 id="pageTitle">Clubs page</h1>-->
 
 <div id="mainContainer">
-
     <% clubs.forEach(function(club) { %>
         <div class="clubContainer cf">
             <div class="mainImage">
@@ -15,7 +14,7 @@
             <div class="clubInfo">
                 <p><span class="infoTitle">Address</span></p>
                 <p><%= club.address %></p>
-                <a class="btnAnchor" href="/clubs/<%= club._id %>"><input type="submit" class="viewBtn" value="View Club"></input></a>
+                <a class="btnAnchor viewBtn" href="/clubs/<%= club._id %>"><input type="submit" value="View Club"></input></a>
             </div><!--class="clubInfo End"-->
         </div> <!--class="clubContainer END"-->
     <% }) %>    
