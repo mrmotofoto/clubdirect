@@ -81,9 +81,12 @@ body {
 
 .signUp {
     font-family: 'Oswald', sans-serif;
-    position: absolute;
-    top: 27px;
-    left: 230px;
+    /*position: absolute;*/
+    /*top: 27px;*/
+    /*left: 230px;*/
+    float:right;
+    margin-top: -20px;
+    margin-right: 65px;
     color:white;
     text-decoration: none;
 }
@@ -317,15 +320,19 @@ textarea {
     float:left;
 }
 
+.addCommentsContainer input[type="text"] {
+    margin-bottom: 10px;
+}
+
 .addCommentsContainer textarea {
-    width: 98%;
-    height: 125px;
+    width: 95%;
+    height: 100px;
     margin-bottom: 10px;
 }
 
 p.showTitles {
     color:orange;
-    font-size: .9em;
+    font-size: 1.5em;
 }
 
 .commentsMain {
@@ -336,4 +343,20 @@ p.showTitles {
     padding: 12px;
     float:right;
     margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+p#commentAuthor {
+    font-weight: normal;
+    font-size: 1.5em;
+    font-style: helvetica;
+    color: orange;
+    margin-bottom: 5px;
+
+}
+
+h4#commentText {
+    font-weight: normal;
+    font-style: helvetica;
+    margin-bottom: 20px;
 }

@@ -37,7 +37,7 @@
 
 <div class="addCommentsContainer">
      <form action="/clubs/<%= club._id %>/comments" method="POST">
-        <input name="comment[author]" name type="text" placeholder="author"></input>
+        <input name="comment[author]" name type="text" placeholder="Author"></input>
         <textarea name="comment[text]" type="text" placeholder="Add Comment"></textarea>
         <!--<p class="showTitles">Comments</p><br>-->
         <!--<textarea type="text" placeholder="Add Comment"></textarea>-->
@@ -46,12 +46,10 @@
 </div>
 <div class="commentsMain">
      <% club.comments.forEach(function(comment) { %>
-        <p><%=comment.author %></p>
-        <h4><%=comment.text %></h4>
+        <p id="commentAuthor"><%=comment.author %>
+        <h4 id="commentText"><%=comment.text %></h4>
     <% }) %>   
 </div>
-
-
 
 </div><!--id="showContainer END"-->
 
