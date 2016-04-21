@@ -8,8 +8,14 @@ var User = require('./models/user');
 var seedDB = require('./seeds');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
+var methodOverride = require('method-override');
 
-//requiring Routes--------------------------------------------
+app.use(function(req, res, next) {
+   res.locals.currentUser = req.user;
+   next();
+});
+
+//REQUIRING Routes--------------------------------------------
 var commentRoutes = require('./routes/comments');
 var clubRoutes = require('./routes/clubs');
 var indexRoutes = require('./routes/index');
@@ -19,10 +25,8 @@ mongoose.connect('mongodb://localhost/club_direct');
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + "/public"));
-app.use(function(req, res, next) {
-   res.locals.currentUser = req.user;
-   next();
-});
+app.use(methodOverride("_method"));
+
 
 
 //seedDB();

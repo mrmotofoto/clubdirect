@@ -83,12 +83,63 @@ router.get('/:id', function(req, res) {
     });
 });
 
+//SHOW EDIT CLUB FORM-----------------------------------------------------------
+router.get("/:id/edit", checkClubOwnerShip, function(req, res){
+    Club.findById(req.params.id, function(err, foundClub) {
+        if(err) {
+            res.redirect("back");
+        }
+        res.render("clubs/edit", {club: foundClub}); 
+    });
+});
+
+//UPDATE CLUB-------------------------------------------------------------------
+router.put("/:id", checkClubOwnerShip, function(req, res) {
+   Club.findByIdAndUpdate(req.params.id, req.body.club, function(err, updated) {
+     if(err) {
+         res.redirect('/clubs');
+     }  else {
+         res.redirect('/clubs/' + req.params.id);
+     }
+   });
+});
+
+//DELETE CLUB-------------------------------------------------------------------
+router.delete("/:id", checkClubOwnerShip, function(req, res) {
+    Club.findByIdAndRemove(req.params.id, function(err) {
+        if(err) {
+            res.redirect("/clubs");
+        } else {
+            res.redirect("/clubs");
+        }
+    });
+});
+
+
 //MIDDLEWARE--------------------------------------------------------------------
 function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()) {
         return next();
     }
     res.redirect('/login');
+}
+
+function checkClubOwnerShip(req, res, next) {
+     if(req.isAuthenticated()){
+        Club.findById(req.params.id, function(err, foundClub) {
+           if(err) {
+               res.redirect("back");
+           } else {
+                if(foundClub.author.id.equals(req.user._id)) {
+                     next(); 
+                } else {
+                     res.redirect("back");
+                }
+           } 
+        });
+    } else {
+        res.redirect("back");
+    }    
 }
 
 module.exports = router;

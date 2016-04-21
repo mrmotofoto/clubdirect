@@ -1,0 +1,75 @@
+<% include ../partials/header %>
+ 
+<div id="formPageContainer">
+    <div id="formContainer">
+        <form action="/clubs/<%= club._id %>?_method=PUT" method="POST">
+           <h1 style="text-align: center;">Edit <%= club.name %></h1>
+            <div class="inputContainer">
+                <p class="showTitles">Club Name</p>
+                <input type="text"  name="club[name]" value="<%= club.name %>"></input>      
+            </div>
+            <div class="inputContainer">
+                 <p class="showTitles">Address</p>
+                <input type="text" name="club[address]" value="<%= club.address %>"></input>      
+            </div>
+            <div class="inputContainer">
+                <p class="showTitles">HR Contact</p>
+                <input type="text" name="club[hrcontact]" value="<%= club.hrcontact %>"></input>     
+            </div>
+            <div class="inputContainer">
+                <p class="showTitles">HR Phone</p>
+                <input type="text" name="club[hrphone]" value="<%= club.hrphone %>"></input>       
+            </div>
+            <div class="inputContainer">
+                <p class="showTitles">HR Email</p>
+                <input type="text" name="club[hremail]" value="<%= club.hremail %>"></input>       
+            </div>
+            <div class="inputContainer">
+                <p class="showTitles">GM Contact</p>
+                <input type="text" name="club[gmcontact]" value="<%= club.gmcontact %>"></input>        
+            </div>
+            <div class="inputContainer">
+                <p class="showTitles">GM Phone</p>
+                <input type="text" name="club[gmphone]" value="<%= club.gmphone %>"></input>        
+            </div>  
+            <div class="inputContainer">
+                <p class="showTitles">GM Email</p>
+                <input type="text" name="club[gmemail]" value="<%= club.gmemail %>"></input>       
+            </div>
+            <div class="inputContainer">
+                <p class="showTitles">Distance</p>
+                <input type="text" name="club[distance]" value="<%= club.distance %>"></input>        
+            </div>
+            <div class="inputContainer">
+               <p class="showTitles">Notes</p>
+               <textarea name="club[notes]" value="<%= club.notes %>"></textarea>      
+            </div>
+            <div class="inputContainer">
+                <p class="showTitles">Image URL</p>
+                <input type="text" name="club[image]" value="<%= club.image %>"></input>   
+            </div>
+            <div class="inputContainer">
+                <button>Submit</button>
+                <a class="backbtn" href="/clubs">Back</a>
+            </div> 
+        </form>    
+    </div>    
+</div>
+
+<% include ../partials/footer %>
+
+
+
+
+
+        <!--name: "Fort Lauderdale Country Club",-->
+        <!--address: "415 E Country Club Cir, Fort Lauderdale, FL 33317",-->
+        <!--hrContact: "Harry Smith",-->
+        <!--hrPhone: "347-666-1234",-->
+        <!--hrEmail: "default@gmail.com",-->
+        <!--GmContact: "Anthony Mandatta",-->
+        <!--GmPhone: "347-452-9552",-->
+        <!--GmEmail: "gmmanaer@club.com",-->
+        <!--distance: "12.7 miles",-->
+        <!--notes: "This could be General Notes Section Some more Notes",-->
+        <!--image: "https://farm3.staticflickr.com/2217/1711688729_10fd998b5d.jpg"-->
