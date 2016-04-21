@@ -81,9 +81,9 @@ body {
 
 .signUp {
     font-family: 'Oswald', sans-serif;
-    /*position: absolute;*/
+    /*position: inherit;*/
     /*top: 27px;*/
-    /*left: 230px;*/
+    /*left: 1000px;*/
     float:right;
     margin-top: -20px;
     margin-right: 65px;
@@ -111,17 +111,37 @@ body {
 padding-left:30px;
 }
 
+.newClubContainer {
+    margin-top: 85px;
+    margin-bottom: 25px;
+    text-align: left;
+    padding: 10px;
+    margin: 85px auto 25px auto;
+    width: 95%;
+
+}
+
+.newClubContainer a:hover {
+background: #00b300;
+}
+.newClubContainer a {
+    text-decoration: none;
+    background:white;
+    padding:7px;
+    color: white;
+    background:#3F9FBF;
+    border-radius:5px;
+}
+
 .clubContainer{
-    border:2px solid #CCC;
-    margin: 60px auto 10px auto;
+    border:2px solid #EEE;
+    margin: 0px auto 5px auto;
     width:30%;
     text-align:center;
     padding:10px 0;
     border-radius: 5px;
     float:left;
     margin-right: 30px;
-    margin-left: 0px;
-    margin-bottom: 0px;
     background:#FFF;
     box-shadow: 3px 3px 10px #AAA;
 }
@@ -134,7 +154,6 @@ padding-left:30px;
     margin-bottom: 3px;
     
 }
-
 
 .clubInfo {
     width: 50%;
@@ -181,7 +200,7 @@ button:hover
 }
 
 .backbtn {
-background: #009900;
+background:#3F9FBF;
 color:white;
 font-size:17px;
 height:25px;
@@ -192,10 +211,10 @@ font-family: helvetica;
 margin-left: 4px;
 box-shadow: 2px 2px 5px #AAA;
  }
+ 
  .backbtn:hover {
 background: #00b300;
- 
- }
+}
  
 .backbtnMain {
 background: #3F9FBF;
@@ -211,9 +230,7 @@ font-family: helvetica;
 box-shadow: 2px 2px 5px #AAA; 
 
  }
- #addNewContainer {
-     margin-top: 40px;
- }
+
  
 
 
@@ -360,3 +377,42 @@ h4#commentText {
     font-style: helvetica;
     margin-bottom: 20px;
 }
+
+
+@media screen and (max-width: 1060px) {
+    .clubContainer{
+    padding: 20px;
+    margin: 0px auto 7px 30px;
+    width:40%;
+    float:left;
+}
+    #mainContainer {
+    padding: 0;
+ }
+}
+
+@media screen and (max-width: 830px) {
+    .clubContainer{
+    margin: 0px auto 7px 15px;
+    }
+}
+
+
+@media screen and (max-width: 650px) {
+    .clubContainer{
+    padding: 5px;
+    margin: 0px auto 7px auto;
+    width:93%;
+    float:none;
+  
+    }
+}
+
+@media screen and (max-width: 500px) {
+.signUp {
+   
+    margin-right: 25px;
+
+    }
+}
+

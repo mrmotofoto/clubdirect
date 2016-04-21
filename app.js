@@ -37,7 +37,7 @@ app.post('/clubs', function(req, res) {
 //DEFAULT ENTRIES IF FORM FIELDS LEFT BLANK--------------------------------------
     var noEntry = "No Entry";
     var defaultImg = "https://farm1.staticflickr.com/63/187187176_73d89267be.jpg";
-    var defaultAdd = "XXX E ZZZZ YYY CCC, Fort Lauderdale, FL 11111"
+    var defaultAdd = "XXX E ZZZZ YYY CCC, Fort Lauderdale, FL 11111";
       
     var name = req.body.name ? req.body.name : noEntry ,
         address = req.body.address ? req.body.address : noEntry,
