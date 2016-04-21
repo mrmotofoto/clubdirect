@@ -14,6 +14,10 @@ mongoose.connect('mongodb://localhost/club_direct');
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + "/public"));
+app.use(function(req, res, next) {
+   res.locals.currentUser = req.user;
+   next();
+});
 
 seedDB();
 
@@ -41,13 +45,13 @@ app.get('/clubs', function(req, res) {
        if(err) {
            console.log(err);
        } else {
-            res.render('clubs/index', {clubs: data});
+            res.render('clubs/index', {clubs: data, currentUser: req.user});
        }
     });
 });
 
 
-app.post('/clubs', function(req, res) {
+app.post('/clubs', isLoggedIn, function(req, res) {
 //DEFAULT ENTRIES IF FORM FIELDS LEFT BLANK--------------------------------------
     var noEntry = "No Entry";
     var defaultImg = "https://farm1.staticflickr.com/63/187187176_73d89267be.jpg";
@@ -88,7 +92,8 @@ app.post('/clubs', function(req, res) {
     }); 
 }); //app.post END--------------------------------------------------------------
 
-app.get('/clubs/new', function(req, res) {
+
+app.get('/clubs/new', isLoggedIn, function(req, res) {
     res.render('clubs/new');
 });
 
@@ -104,7 +109,6 @@ app.get('/clubs/:id', function(req, res) {
     });
 });
 
-
 app.get('/clubs/:id/comments/new', function(req, res) {
     Club.findById(req.params.id, function(err, club) {
         if(err) {
@@ -115,7 +119,8 @@ app.get('/clubs/:id/comments/new', function(req, res) {
     })
 });
 
-app.post('/clubs/:id/comments', function(req, res) {
+
+app.post('/clubs/:id/comments', isLoggedIn, function(req, res) {
 Club.findById(req.params.id, function(err, club) {
     if(err) {
         console.log(err);
@@ -133,6 +138,7 @@ Club.findById(req.params.id, function(err, club) {
     }
 });    
 });
+
 
 //AUTH ROUTES-------------------------------------------------
 app.get('/register', function(req, res) {
@@ -152,6 +158,7 @@ app.post('/register', function(req, res) {
     });
 });
 
+
 //SHOW LOGIN FORM-------
 app.get('/login', function(req, res) {
    res.render('login'); 
@@ -164,6 +171,21 @@ app.post('/login', passport.authenticate('local',
         failureRedirect: "/login"
     }), function(req, res) {
 });
+
+//logout
+app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/clubs')
+});
+
+
+
+function isLoggedIn(req, res, next) {
+    if(req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/login');
+}
 
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log('Server Is Running'); 

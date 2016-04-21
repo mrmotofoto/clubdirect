@@ -14,8 +14,14 @@
         <p>CLUB <span class="logoSpan">direct</span></p>
     </div>
     <div class="signUp">
-        <a href="login">login / </a>
-        <a href="signup">sign Up</a>
+        <% if(!currentUser) { %>
+        <a href="/login">Login </a>
+        <!--<a href="/register"> Sign Up </a>      -->
+  <%  } else { %>
+         <a href="#">Hi <%=currentUser.username %>!!!</a>
+        <a href="/logout"> Log Out </a>
+ <% } %>
+
     </div>
 </nav>
   
