@@ -14,7 +14,7 @@ var data = [
         gmemail: "gm@club.com",
         distance: "6.7 miles",
         notes: "This could be General Notes Section",
-        image: "https://farm3.staticflickr.com/2217/1711688729_10fd998b5d.jpg",
+        image: "https://farm1.staticflickr.com/63/187187176_73d89267be.jpg",
         },
         {
         name: "Fort Lauderdale Country Club",
@@ -27,7 +27,7 @@ var data = [
         gmemail: "gmmanaer@club.com",
         distance: "12.7 miles",
         notes: "This could be General Notes Section Some more Notes",
-        image: "https://farm3.staticflickr.com/2217/1711688729_10fd998b5d.jpg"
+        image: "https://farm1.staticflickr.com/63/187187176_73d89267be.jpg"
         },
         {
         name: "Bonaventure Country Club",
@@ -40,7 +40,7 @@ var data = [
         gmemail: "gmmanager@club.com",
         distance: "17.7 miles",
         notes: "This could be General Notes Section Some more Notes",
-        image: "https://farm9.staticflickr.com/8536/8778590094_60024e6423.jpg"
+        image: "https://farm1.staticflickr.com/63/187187176_73d89267be.jpg"
         },
         {
         name: "Bushwood Country Club",
@@ -60,34 +60,34 @@ var data = [
 function seedDB() {
     //CLEAR THE COLLECTION---------------------
     Club.remove({}, function(err) {
-    if(err) {
-        console.log('There was a problem');
-    }
-        console.log('Removed Clubs');
-        //ADD TO THE COLLECTION----------------
-        data.forEach(function(seed) {
-        Club.create(seed, function(err, club) {
-           if(err) {
-               console.log(err);
-           } else {
-               console.log('Added A Club');
-               //CREAT COMMENT-----------------
-               Comment.create(
-                   {
-                   text: "This great but no Internet",
-                   author: "Homer Simpson"    
-                   }, function(err, comment) {
-                       if(err) {
-                           console.log(err);
-                       } else {
-                            club.comments.push(comment);
-                            club.save();
-                            console.log('Created New Comment');
-                       }//ELSE END------------- 
-                   });//Comment.create END-----
-           }//ELSE END-------------------------
-        });//Club.create(seed)-----------------
-    });//DATA FOREACH END----------------------
+    // if(err) {
+    //     console.log('There was a problem');
+    // }
+    //     console.log('Removed Clubs');
+    //     //ADD TO THE COLLECTION----------------
+    //     data.forEach(function(seed) {
+    //     Club.create(seed, function(err, club) {
+    //       if(err) {
+    //           console.log(err);
+    //       } else {
+    //           console.log('Added A Club');
+    //           //CREATE COMMENT-----------------
+    //           Comment.create(
+    //               {
+    //               text: "This is a test Comment",
+    //               author: "Lemmy Killmeister"    
+    //               }, function(err, comment) {
+    //                   if(err) {
+    //                       console.log(err);
+    //                   } else {
+    //                         club.comments.push(comment);
+    //                         club.save();
+    //                         console.log('Created New Comment');
+    //                   }//ELSE END------------- 
+    //               });//Comment.create END-----
+    //       }//ELSE END-------------------------
+    //     });//Club.create(seed)-----------------
+    // });//DATA FOREACH END----------------------
     });//Club.remove({}) END-------------------
 }//function seedDB END------------------------
 

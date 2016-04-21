@@ -12,6 +12,13 @@ var clubSchema = new mongoose.Schema({
     distance: String,
     notes: String,
     image: String,
+    author: {
+        id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User"
+        },
+        username: String
+    },
     comments: [
         {
             type: mongoose.Schema.Types.ObjectId,//OBJ ID REF----------
