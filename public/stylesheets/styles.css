@@ -152,7 +152,6 @@ background: #00b300;
     font-weight:bold;
     font-size: 1.2em;
     margin-bottom: 3px;
-    
 }
 
 .clubInfo {
@@ -377,6 +376,8 @@ h4#commentText {
     font-style: helvetica;
     margin-bottom: 20px;
 }
+
+
 
 
 @media screen and (max-width: 1060px) {

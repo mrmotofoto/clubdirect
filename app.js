@@ -4,7 +4,10 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Club = require('./models/club');
 var Comment = require('./models/comment');
+var User = require('./models/user');
 var seedDB = require('./seeds');
+var passport = require('passport');
+var LocalStrategy = require('passport-local');
 
 mongoose.connect('mongodb://localhost/club_direct');
 
@@ -14,7 +17,18 @@ app.use(express.static(__dirname + "/public"));
 
 seedDB();
 
+//PASSPORT CONFIG----------------------------------------------
+app.use(require('express-session')({
+    secret: "Once again harry wins the cutest dog in the world award",
+    resave:false,
+    saveUninitialized: false
+}));
 
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 //ROUTES------------------------------------------------
 app.get('/', function(req, res) {
@@ -118,6 +132,37 @@ Club.findById(req.params.id, function(err, club) {
         })
     }
 });    
+});
+
+//AUTH ROUTES-------------------------------------------------
+app.get('/register', function(req, res) {
+   res.render('register'); 
+});
+
+app.post('/register', function(req, res) {
+    var newUser = new User({username: req.body.username});
+    User.register(newUser, req.body.password, function(err, user) {
+        if(err) {
+            console.log(err);
+            return res.render('register');
+        } 
+           passport.authenticate('local')(req, res, function() {
+           res.redirect('/clubs'); 
+        });
+    });
+});
+
+//SHOW LOGIN FORM-------
+app.get('/login', function(req, res) {
+   res.render('login'); 
+});
+
+//LOGIN LOGIC ----------
+app.post('/login', passport.authenticate('local', 
+    {
+        successRedirect: "/clubs",
+        failureRedirect: "/login"
+    }), function(req, res) {
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
