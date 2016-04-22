@@ -68,7 +68,7 @@ router.post('/', isLoggedIn, function(req, res) {
 
 //SHOW CREATE NEW CLUB FORM-----------------------------------------------------
 router.get('/new', isLoggedIn, function(req, res) {
-    res.render('clubs/new');
+    res.render('clubs/new', {currentUser: req.user});
 });
 
 //SHOW ONE CLUB ----------------------------------------------------------------
@@ -78,7 +78,7 @@ router.get('/:id', function(req, res) {
             console.log(err);
         } else {
             console.log(data);
-            res.render("clubs/show", {club: data});
+            res.render("clubs/show", {club: data, currentUser: req.user});
         }
     });
 });
@@ -89,7 +89,7 @@ router.get("/:id/edit", checkClubOwnerShip, function(req, res){
         if(err) {
             res.redirect("back");
         }
-        res.render("clubs/edit", {club: foundClub}); 
+        res.render("clubs/edit", {club: foundClub, currentUser: req.user}); 
     });
 });
 

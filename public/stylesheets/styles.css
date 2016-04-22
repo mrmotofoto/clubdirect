@@ -118,6 +118,7 @@ padding-left:30px;
     padding: 10px;
     margin: 85px auto 25px auto;
     width: 95%;
+    
 
 }
 
@@ -131,11 +132,12 @@ background: #00b300;
     color: white;
     background:#3F9FBF;
     border-radius:5px;
+    box-shadow: 2px 2px 5px #AAA; 
 }
 
 .clubContainer{
     border:2px solid #EEE;
-    margin: 0px auto 5px auto;
+    margin: 0px auto 10px auto;
     width:30%;
     text-align:center;
     padding:10px 0;
@@ -299,6 +301,7 @@ textarea {
     width: 90%;
     margin: 100px auto 0px auto;
     padding: 20px;
+
 }
 .showImg {
     width: 45%;

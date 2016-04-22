@@ -29,10 +29,13 @@
     <div class="showImg">
         <img src="<%= club.image %>">
             <!--NEED TO GET EDIT BUTTONS TO HIDE IF NOT LOGGED IN-->
+             <% if(currentUser && club.author.id.equals(currentUser._id)) { %>
+           
            <a href="/clubs/<%= club._id %>/edit">Edit Club</a>
              <form action="/clubs/<%= club._id %>?_method=DELETE" method="POST">
                 <button>Delete</button> 
              </form>
+             <% } %>
     </div>
     <div class="cf"></div>
 <br>    

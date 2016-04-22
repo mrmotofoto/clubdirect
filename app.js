@@ -10,11 +10,6 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local');
 var methodOverride = require('method-override');
 
-app.use(function(req, res, next) {
-   res.locals.currentUser = req.user;
-   next();
-});
-
 //REQUIRING Routes--------------------------------------------
 var commentRoutes = require('./routes/comments');
 var clubRoutes = require('./routes/clubs');
